@@ -17,18 +17,21 @@ def calIReuse(I_size, F_size, stride):
             I_reuse += x_reuse*y_reuse
     return(I_reuse)
 
-F_size = int(input("Enter Filter size:"))
-F_num = int(input("Enter Filter number:"))
-stride = int(input("Enter the Stride:"))
-I_size = int(input("Enter Image size:"))
+loop_num = int(input("Enter the total iteration:"))
 
-output_size = ceil((I_size - F_size)/stride) + 1
-F_reuse = pow(output_size, 2)
-I_reuse_total = calIReuse(I_size, F_size, stride)
-I_reuse = I_reuse_total * F_num / pow(I_size, 2)
+for i in range(0, loop_num):
+    F_size = int(input("Enter Filter size:"))
+    F_num = int(input("Enter Filter number:"))
+    stride = int(input("Enter the Stride:"))
+    I_size = int(input("Enter Image size:"))
 
-print()
-#print("Output Size is:", output_size)
-print("Average Reuse of Filter is:", F_reuse)
-#print("Total Reuse of Image is:", I_reuse_total)
-print("Average Reuse of Image is: ", I_reuse)
+    output_size = ceil((I_size - F_size)/stride) + 1
+    F_reuse = pow(output_size, 2)
+    I_reuse_total = calIReuse(I_size, F_size, stride)
+    I_reuse = I_reuse_total * F_num / pow(I_size, 2)
+
+    print()
+    #print("Output Size is:", output_size)
+    #print("Total Reuse of Image is:", I_reuse_total)
+    print("Average Reuse of Filter is:", F_reuse)
+    print("Average Reuse of Image is: ", I_reuse)
